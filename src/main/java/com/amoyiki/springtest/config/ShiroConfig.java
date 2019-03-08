@@ -200,8 +200,8 @@ public class ShiroConfig {
      * @param
      * @return org.springframework.web.servlet.HandlerExceptionResolver
      */
-    @Bean(name = "exceptionHandler")
-    public HandlerExceptionResolver handlerExceptionResolver(){
-        return new MyExceptionHandler();
-    }
+//    @Bean(name = "exceptionHandler")
+//    public HandlerExceptionResolver handlerExceptionResolver(){
+//        return new MyExceptionHandler();
+//    }
 }

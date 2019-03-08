@@ -27,4 +27,16 @@ public class Perm implements Serializable {
     private Date updated;   // 修改时间
     private String status;
 
+    public Perm() {
+    }
+
+    public Perm(Long id, String name, Integer type, String code, Date created, Date updated, String status) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.code = code;
+        this.created = created;
+        this.updated = updated;
+        this.status = status;
+    }
 }

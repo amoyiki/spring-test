@@ -4,10 +4,12 @@ import com.amoyiki.springtest.entry.User;
 import com.amoyiki.springtest.form.LoginForm;
 import com.amoyiki.springtest.utils.ResultVOUtil;
 import com.amoyiki.springtest.vo.ResultVO;
+import com.amoyiki.springtest.vo.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -46,7 +48,7 @@ public class LoginController {
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(form.getUsername(), form.getPassword());
             subject.login(token);
-            User user = (User) subject.getPrincipal();
+            UserInfo user = (UserInfo) subject.getPrincipal();
             if (user == null) throw new AuthenticationException();
             Map<String, Object> resp = new HashMap<>();
             resp.put("token", subject.getSession().getId());
@@ -62,7 +64,7 @@ public class LoginController {
          */
         @GetMapping(value = "/unauth")
         public ResultVO unauth () {
+            log.info("├ [未登录路由]: 无 Authorization 走当前路由");
             return ResultVOUtil.error("100000", "未登录");
         }
-
     }

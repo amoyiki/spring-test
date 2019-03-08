@@ -61,7 +61,8 @@ public class ShiroRealm extends AuthorizingRealm {
         String username = (String) token.getPrincipal();
         String password = new String((char[])token.getCredentials());
         // 查找用户
-        User user = userService.findByUsername(username);
+        UserInfo user = userService.findByUsername(username);
+
         if (user == null) {
             throw new UnknownAccountException("用户密码错误!");
         }else if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
@@ -69,6 +70,8 @@ public class ShiroRealm extends AuthorizingRealm {
         }else if (user.getStatus().equals("0")){
             throw new LockedAccountException("账号已被锁定，请联系管理员");
         }
+        // 获取到用户后加入权限和角色信息
+
         return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 }
