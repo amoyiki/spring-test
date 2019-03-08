@@ -2,6 +2,7 @@ package com.amoyiki.springtest.config;
 
 //import com.amoyiki.springtest.exception.MyExceptionHandler;
 
+import com.amoyiki.springtest.exception.MyExceptionHandler;
 import com.amoyiki.springtest.shiro.ShiroRealm;
 import com.amoyiki.springtest.shiro.ShiroTokenManager;
 import lombok.extern.slf4j.Slf4j;
@@ -199,8 +200,8 @@ public class ShiroConfig {
      * @param
      * @return org.springframework.web.servlet.HandlerExceptionResolver
      */
-//    @Bean(name = "exceptionHandler")
-//    public HandlerExceptionResolver handlerExceptionResolver(){
-//        return new MyExceptionHandler();
-//    }
+    @Bean(name = "exceptionHandler")
+    public HandlerExceptionResolver handlerExceptionResolver(){
+        return new MyExceptionHandler();
+    }
 }

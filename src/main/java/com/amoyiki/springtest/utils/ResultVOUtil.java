@@ -2,6 +2,8 @@ package com.amoyiki.springtest.utils;
 
 import com.amoyiki.springtest.vo.ResultVO;
 
+import java.util.Map;
+
 /**
  * @description:
  * @author: amoyiki
@@ -16,10 +18,17 @@ public class ResultVOUtil {
         return resultVO;
     }
 
-    public static ResultVO erro(String code, String message) {
+    public static ResultVO error(String code, String message) {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(code);
         resultVO.setMsg(message);
+        return resultVO;
+    }
+    public static ResultVO error(String code, String message, Map issus) {
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(code);
+        resultVO.setMsg(message);
+        resultVO.setData(issus);
         return resultVO;
     }
 }

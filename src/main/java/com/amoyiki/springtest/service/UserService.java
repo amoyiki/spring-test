@@ -12,7 +12,7 @@ public interface UserService {
      * 根据用户名查找
      * @author amoyiki
      * @param username
-     * @return com.amoyiki.shirotest.entry.User
+     * @return com.amoyiki.springtest.entry.User
      */
     User findByUsername(String username);
 }

@@ -2,5 +2,15 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    url: jdbc:mysql://192.168.1.145:3306/SpringCloud_Shell?characterEncoding=utf-8&useSSl=false
+    username: xyj
+    password: ryrbz
+    url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false
+
+
+
+  redis:
+    shiro:
+      host: 192.168.1.251:6379
+      password: ryrbz
+      timeout: 3000
+      database: 5

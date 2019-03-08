@@ -1,22 +1,17 @@
 package com.amoyiki.springtest.shiro;
-
-import com.amoyiki.springtest.entry.Role;
 import com.amoyiki.springtest.entry.User;
 import com.amoyiki.springtest.service.UserService;
-import com.amoyiki.shirotest.vo.UserInfo;
+import com.amoyiki.springtest.vo.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
-import java.util.Optional;
 
 /**
  * 自定义权限匹配和账号密码匹配
@@ -37,6 +32,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        log.info("├ [权限校验]: 用户角色权限校验");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         UserInfo userInfo = (UserInfo) principals.getPrimaryPrincipal();
         // 有值情况
@@ -61,21 +57,16 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        log.info("├ [token] ====== {}",token.getCredentials());
+        log.info("├ [登录校验]: 用户账号及密码验证 ");
         String username = (String) token.getPrincipal();
-        log.info("用户 {}  认证-------ShiroRealm.doGetAuthenticationInfo", username);
         String password = new String((char[])token.getCredentials());
         // 查找用户
-
         User user = userService.findByUsername(username);
         if (user == null) {
-            log.info("======");
             throw new UnknownAccountException("用户密码错误!");
         }else if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
-            log.info("=-----");
             throw new IncorrectCredentialsException("用户名密码错误!");
         }else if (user.getStatus().equals("0")){
-            log.info("==1111====");
             throw new LockedAccountException("账号已被锁定，请联系管理员");
         }
         return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
