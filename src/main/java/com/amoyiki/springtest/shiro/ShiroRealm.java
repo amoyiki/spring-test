@@ -9,6 +9,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
@@ -22,6 +23,7 @@ import org.springframework.util.DigestUtils;
 public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
+    @Lazy
     private UserService userService;
     /**
      *  授权- 角色权限校验
@@ -33,17 +35,18 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         log.info("├ [权限校验]: 用户角色权限校验");
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         UserInfo userInfo = (UserInfo) principals.getPrimaryPrincipal();
+        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        log.info("├ [角色代码]: {}",userInfo);
         // 有值情况
         if (userInfo != null && !CollectionUtils.isEmpty(userInfo.getRoles())) {
             for (String role : userInfo.getRoles()) {
                 authorizationInfo.addRole(role);
-                log.info("├ [角色代码]: ",role);
+                log.info("├ [角色代码]: {}",role);
             }
             for (String perm : userInfo.getPerms()) {
                 authorizationInfo.addStringPermission(perm);
-                log.info("├ [权限代码]: ",perm);
+                log.info("├ [权限代码]: {}",perm);
             }
         }
         return authorizationInfo;
@@ -57,7 +60,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        log.info("├ [登录校验]: 用户账号及密码验证 ");
+        log.info("├ [登录校验]: 用户账号及密码验证, {}",token.getPrincipal());
         String username = (String) token.getPrincipal();
         String password = new String((char[])token.getCredentials());
         // 查找用户

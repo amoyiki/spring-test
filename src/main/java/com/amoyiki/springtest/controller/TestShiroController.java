@@ -3,9 +3,7 @@ package com.amoyiki.springtest.controller;
 import com.amoyiki.springtest.utils.ResultVOUtil;
 import com.amoyiki.springtest.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authz.annotation.RequiresGuest;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.authz.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,24 +16,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestShiroController {
 
     @GetMapping(value = "/authorize")
+    @RequiresUser
     public ResultVO authorize () {
         return ResultVOUtil.error("0", "登录通过");
     }
 
-    @RequiresGuest
+
     @GetMapping("/guest")
+    @RequiresGuest
     public ResultVO guest() {
         return ResultVOUtil.error("0", "guest");
     }
 
-    @RequiresPermissions(value = {"TEST"})
+
     @GetMapping("/perm")
+    @RequiresPermissions("TEST")
     public ResultVO perm() {
         return ResultVOUtil.error("0", "perm");
     }
 
-    @RequiresRoles(value = {"ADMIN"})
+
     @GetMapping("/roles")
+    @RequiresRoles("ADMIN")
     public ResultVO roles() {
         return ResultVOUtil.error("0", "roles");
     }

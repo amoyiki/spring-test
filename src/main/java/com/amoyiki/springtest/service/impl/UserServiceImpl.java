@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
                 permSet.addAll(permList.stream().map(perm -> perm.getCode()).collect(Collectors.toSet()));
             }
             userInfo.setPerms(permSet);
+            log.info("├ [UserService] 按用户名查出User {}",userInfo);
             return userInfo;
         }
         log.info("├ [UserService] 按用户名查出User {}",o.get().toString());

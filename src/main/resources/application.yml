@@ -4,13 +4,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false
-
+    url: jdbc:mysql://192.168.1.200:3306/springtest?characterEncoding=utf-8&useSSl=false
+  jpa:
+    show-sql: true
 
 
   redis:
     shiro:
-      host: 192.168.1.251:6379
+      host: 192.168.1.200:6379
       password: root
-      timeout: 3000
+      timeout: 5000
       database: 5

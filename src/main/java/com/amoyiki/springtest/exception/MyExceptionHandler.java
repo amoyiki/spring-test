@@ -21,6 +21,7 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
                                          Object handler, Exception ex) {
+        ex.printStackTrace();
         log.info("├ [全局异常处理]: resolveException");
         ModelAndView modelAndView = new ModelAndView();
         FastJsonJsonView view = new FastJsonJsonView();
