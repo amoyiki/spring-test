@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OAUTH2 登陆框</title>
+</head>
+<body>
+<form th:method="POST" id="login" action="">
+    <div>
+        <p th:text="${client}"></p>
+    </div>
+    <div>
+        <span class="title">用户名:</span>
+        <input id="username" name="username" type="text">
+    </div>
+    <div>
+        <span  class="title">密码:</span>
+        <input id="password" name="password" type="password">
+    </div>
+    <div>
+        <input type="submit" value="提交">
+    </div>
+</form>
+</body>
+</html>

@@ -105,7 +105,7 @@ public class ShiroConfig {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		securityManager.setRealm(shiroRealm());
 		securityManager.setSessionManager(sessionManager());
-		securityManager.setCacheManager(cacheManager());
+		securityManager.setCacheManager(cacheManagers());
 		return securityManager;
 	}
 
@@ -143,13 +143,13 @@ public class ShiroConfig {
 
 	/**
 	 * 使用shiro-redis 实现 cacheManager
-	 *
+	 * 变更方法名 cacheManager ——> cacheManagers 防止多个 cacheManager 冲突
 	 * @param
 	 * @return org.crazycake.shiro.RedisCacheManager
 	 * @author amoyiki
 	 */
 	@Bean
-	public RedisCacheManager cacheManager() {
+	public RedisCacheManager cacheManagers() {
 		RedisCacheManager redisCacheManager = new RedisCacheManager();
 		redisCacheManager.setRedisManager(redisManager());
 		return redisCacheManager;
@@ -205,7 +205,7 @@ public class ShiroConfig {
 		// 前后端分离，不需要配置登录界面路由
 		shiroFilterFactoryBean.setLoginUrl("/unauth");
 		// 除了以上链接都需要拦截验证
-		filterChainDefinitionMap.put("/**", "authc");
+		filterChainDefinitionMap.put("/**", "anon");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;
 	}
