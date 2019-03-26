@@ -1,30 +1,16 @@
-
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
-    url: jdbc:mysql://192.168.1.200:3306/springtest?characterEncoding=utf-8&useSSl=false&serverTimezone=UTC
-    hikari:
-      maximum-pool-size: 10 # 最大连接池
-      minimum-idle: 0 # 允许最小空闲数
-      idle-timeout: 180000 # 超时(毫秒)
-      connection-test-query: SELECT 1
-  jpa:
-    show-sql: true
+  # 默认选择开发环境
+  profiles:
+    active:
+      - dev
 
+  # 公共配置
   cache:
     type: ehcache
     ehcache:
       config: classpath:ehcache.xml # ehcache 配置文件
-  redis:
-    shiro:
-      host: 192.168.1.200:6379
-      password: root
-      timeout: 5000
-      database: 5
 
-  # thymeleaf 文件路径及尾缀
+
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
