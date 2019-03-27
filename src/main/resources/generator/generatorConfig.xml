@@ -7,23 +7,38 @@
 
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <property name="javaFileEncoding" value="UTF-8"/>
-        <property name="useMapperCommentGenerator" value="false"/>
+        <!-- 所有字段都用`进行包裹 -->
+        <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
-
+        <!-- 影响上方配置 -->
+        <!--<property name="useMapperCommentGenerator" value="false"/>-->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+
             <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
             <property name="caseSensitive" value="true"/>
             <property name="forceAnnotation" value="true"/>
             <property name="beginningDelimiter" value="`"/>
             <property name="endingDelimiter" value="`"/>
         </plugin>
+        <!-- 取消注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
         <!-- mysql连接信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.1.200:3306/springtest"
                         userId="root"
                         password="root">
         </jdbcConnection>
+        <javaTypeResolver>
+            <!-- 默认情况下数据库中的 decimal，bigInt 在 Java 对应是 sql 下的 BigDecimal 类 -->
+            <!-- 不是 double 和 long 类型 -->
+            <!-- 使用常用的基本类型代替 sql 包下的引用类型 -->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
         <!-- 对于生成的entity所在包 -->
         <javaModelGenerator targetPackage="com.amoyiki.springtest.entry" targetProject="src/main/java"/>
 
@@ -34,7 +49,8 @@
         <javaClientGenerator targetPackage="com.amoyiki.springtest.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="user"></table>
-
+        <table tableName="sys_acl">
+        </table>
     </context>
+
 </generatorConfiguration>
