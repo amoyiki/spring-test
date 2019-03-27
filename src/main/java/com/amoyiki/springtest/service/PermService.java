@@ -9,5 +9,5 @@ import java.util.List;
  * @since 2019/3/8
  */
 public interface PermService {
-    List<Perm> findPermListByRid(Long rid);
+    List<Perm> findPermListByRid(Integer rid);
 }

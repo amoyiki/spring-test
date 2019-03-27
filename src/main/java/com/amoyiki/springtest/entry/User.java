@@ -1,31 +1,128 @@
 package com.amoyiki.springtest.entry;
 
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
 
-/**
- * @author amoyiki
- * @since 2019/3/7
- */
-@Entity
-@Data
-public class User implements Serializable {
-    private static final long serialVersionUID = 2894041875355222436L;
+@Table(name = "`user`")
+public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;       // 用户id
-    private String username;   // 登录名，不可改
-    private String password;     // 已加密的登录密码
-    private String salt;    // 加密盐值
-    private Date created;   // 创建时间
-    private Date updated;   // 修改时间
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`id`")
+    private Integer id;
+
+    @Column(name = "`username`")
+    private String username;
+
+    @Column(name = "`password`")
+    private String password;
+
+    @Column(name = "`salt`")
+    private String salt;
+
+    @Column(name = "`created`")
+    private Date created;
+
+    @Column(name = "`updated`")
+    private Date updated;
+
+    @Column(name = "`status`")
     private String status;
+
+    /**
+     * @return id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return salt
+     */
+    public String getSalt() {
+        return salt;
+    }
+
+    /**
+     * @param salt
+     */
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    /**
+     * @return created
+     */
+    public Date getCreated() {
+        return created;
+    }
+
+    /**
+     * @param created
+     */
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    /**
+     * @return updated
+     */
+    public Date getUpdated() {
+        return updated;
+    }
+
+    /**
+     * @param updated
+     */
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    /**
+     * @return status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

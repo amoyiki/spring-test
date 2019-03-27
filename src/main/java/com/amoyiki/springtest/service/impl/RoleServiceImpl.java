@@ -1,7 +1,7 @@
 package com.amoyiki.springtest.service.impl;
 
 import com.amoyiki.springtest.entry.Role;
-import com.amoyiki.springtest.repository.RoleRepository;
+import com.amoyiki.springtest.mapper.RoleMapper;
 import com.amoyiki.springtest.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class RoleServiceImpl implements RoleService {
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleMapper roleMapper;
 
 
 //    @Override

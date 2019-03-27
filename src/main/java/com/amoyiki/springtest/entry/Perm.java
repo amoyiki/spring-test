@@ -1,42 +1,128 @@
 package com.amoyiki.springtest.entry;
 
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 
-/**
- * @author amoyiki
- * @since 2019/3/7
- */
-@Entity
-@Data
-public class Perm implements Serializable {
-    private static final long serialVersionUID = 2365700163036408260L;
+@Table(name = "`perm`")
+public class Perm {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;       // 权限id
-    private String name;   // 权限名称
-    private Integer type;  // 权限类型：1.菜单；2.按钮
-    private String code;    // 权限值，shiro的权限控制表达式
-    private Date created;   // 创建时间
-    private Date updated;   // 修改时间
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`id`")
+    private Integer id;
+
+    @Column(name = "`name`")
+    private String name;
+
+    @Column(name = "`type`")
+    private Integer type;
+
+    @Column(name = "`code`")
+    private String code;
+
+    @Column(name = "`created`")
+    private Date created;
+
+    @Column(name = "`updated`")
+    private Date updated;
+
+    @Column(name = "`status`")
     private String status;
 
-    public Perm() {
+    /**
+     * @return id
+     */
+    public Integer getId() {
+        return id;
     }
 
-    public Perm(Long id, String name, Integer type, String code, Date created, Date updated, String status) {
+    /**
+     * @param id
+     */
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name
+     */
+    public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return type
+     */
+    public Integer getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     */
+    public void setType(Integer type) {
         this.type = type;
+    }
+
+    /**
+     * @return code
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * @param code
+     */
+    public void setCode(String code) {
         this.code = code;
+    }
+
+    /**
+     * @return created
+     */
+    public Date getCreated() {
+        return created;
+    }
+
+    /**
+     * @param created
+     */
+    public void setCreated(Date created) {
         this.created = created;
+    }
+
+    /**
+     * @return updated
+     */
+    public Date getUpdated() {
+        return updated;
+    }
+
+    /**
+     * @param updated
+     */
+    public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    /**
+     * @return status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status
+     */
+    public void setStatus(String status) {
         this.status = status;
     }
 }

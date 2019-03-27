@@ -1,26 +1,59 @@
 package com.amoyiki.springtest.entry;
 
-import lombok.Data;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
-
-/**
- * @author amoyiki
- * @since 2019/3/7
- */
-@Entity
-@Data
-public class UserRole implements Serializable {
-
-    private static final long serialVersionUID = 2453814492325477077L;
+@Table(name = "`user_role`")
+public class UserRole {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
-    private Long userId;
-    private Long roleId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`id`")
+    private Integer id;
 
+    @Column(name = "`user_id`")
+    private Integer userId;
+
+    @Column(name = "`role_id`")
+    private Integer roleId;
+
+    /**
+     * @return id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return user_id
+     */
+    public Integer getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId
+     */
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    /**
+     * @return role_id
+     */
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    /**
+     * @param roleId
+     */
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
 }

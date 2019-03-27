@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: xyj
     password: ryrbz
-    url: jdbc:mysql://192.168.1.200:3306/springtest?characterEncoding=utf-8&useSSl=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false&serverTimezone=GMT%2B8
     # hikari 方式连接
 #    hikari:
 #      maximum-pool-size: 10 # 最大连接池
@@ -46,19 +46,20 @@ spring:
         login-username: admin
         login-password: 123
 
-  jpa:
-    show-sql: true
 
   redis:
     shiro:
-      host: 192.168.1.200:6379
-      password: root
+      host: 192.168.1.251:6379
+      password: ryrbz
       timeout: 5000
       database: 5
 
   thymeleaf:
     cache: false
 
+logging:
+  level:
+    com.amoyiki.springtest.mapper: DEBUG
 # MyBatis配置
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml   # 配置Mapper.xml文件所在路径

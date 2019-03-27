@@ -3,9 +3,9 @@ package com.amoyiki.springtest.service.impl;
 import com.amoyiki.springtest.entry.Perm;
 import com.amoyiki.springtest.entry.Role;
 import com.amoyiki.springtest.entry.User;
-import com.amoyiki.springtest.repository.PermRepository;
-import com.amoyiki.springtest.repository.RoleRepository;
-import com.amoyiki.springtest.repository.UserRepository;
+import com.amoyiki.springtest.mapper.PermMapper;
+import com.amoyiki.springtest.mapper.RoleMapper;
+import com.amoyiki.springtest.mapper.UserMapper;
 import com.amoyiki.springtest.service.UserService;
 import com.amoyiki.springtest.vo.UserInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -25,35 +25,34 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserMapper userMapper;
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleMapper roleMapper;
     @Autowired
-    private PermRepository permRepository;
+    private PermMapper permMapper;
 
     @Override
     public UserInfo findByUsername(String username) {
-        Optional<User> o = userRepository.findByUsername(username);
-        if (o.isPresent()) {
-            User user = (User)o.get();
+        User user = userMapper.findByUsername(username);
+        if (user != null) {
             UserInfo userInfo = new UserInfo();
             BeanUtils.copyProperties(user, userInfo);
 
-            List<Role> roleList = roleRepository.findRoleListByUid(user.getId());
+            List<Role> roleList = roleMapper.findRoleListByUid(user.getId());
             userInfo.setRoles(roleList.stream().map(role -> role.getCode()).collect(Collectors.toSet()));
 
-            List<Long> roleIdList = (List<Long>) roleList.stream().map(role -> role.getId()).collect(Collectors.toList());
+            List<Integer> roleIdList =
+                    (List<Integer>) roleList.stream().map(role -> role.getId()).collect(Collectors.toList());
 
             Set<String> permSet = new HashSet<>();
-            for (Long rid : roleIdList) {
-                List<Perm> permList = permRepository.findPermListByRid(rid);
+            for (Integer rid : roleIdList) {
+                List<Perm> permList = permMapper.findPermListByRid(rid);
                 permSet.addAll(permList.stream().map(perm -> perm.getCode()).collect(Collectors.toSet()));
             }
             userInfo.setPerms(permSet);
             log.info("├ [UserService] 按用户名查出User {}",userInfo);
             return userInfo;
         }
-        log.info("├ [UserService] 按用户名查出User {}",o.get().toString());
         return null;
     }
 }

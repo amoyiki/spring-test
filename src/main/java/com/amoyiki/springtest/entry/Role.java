@@ -1,29 +1,128 @@
 package com.amoyiki.springtest.entry;
 
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 
-/**
- * @author amoyiki
- * @since 2019/3/7
- */
-@Entity
-@Data
-public class Role implements Serializable {
-    private static final long serialVersionUID = -2833418103499944462L;
+@Table(name = "`role`")
+public class Role {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;       // 角色id
-    private String name;   // 角色名，用于显示
-    private String desc;   // 角色描述
-    private String code;    // 角色值，用于权限判断
-    private Date created;   // 创建时间
-    private Date updated;   // 修改时间
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`id`")
+    private Integer id;
+
+    @Column(name = "`name`")
+    private String name;
+
+    @Column(name = "`desc`")
+    private String desc;
+
+    @Column(name = "`code`")
+    private String code;
+
+    @Column(name = "`created`")
+    private Date created;
+
+    @Column(name = "`updated`")
+    private Date updated;
+
+    @Column(name = "`status`")
     private String status;
+
+    /**
+     * @return id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return desc
+     */
+    public String getDesc() {
+        return desc;
+    }
+
+    /**
+     * @param desc
+     */
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    /**
+     * @return code
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * @param code
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
+     * @return created
+     */
+    public Date getCreated() {
+        return created;
+    }
+
+    /**
+     * @param created
+     */
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    /**
+     * @return updated
+     */
+    public Date getUpdated() {
+        return updated;
+    }
+
+    /**
+     * @param updated
+     */
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    /**
+     * @return status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

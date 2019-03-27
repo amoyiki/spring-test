@@ -14,8 +14,9 @@
         <!-- 影响上方配置 -->
         <!--<property name="useMapperCommentGenerator" value="false"/>-->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-
-            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- 此处的 MyMapper注意一定不能被扫描到-->
+            <property name="mappers" value="com.amoyiki.springtest.baseMapper.BaseMapper"/>
+            <!--<property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
             <property name="caseSensitive" value="true"/>
             <property name="forceAnnotation" value="true"/>
             <property name="beginningDelimiter" value="`"/>
@@ -28,9 +29,9 @@
         </commentGenerator>
         <!-- mysql连接信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.1.200:3306/springtest"
-                        userId="root"
-                        password="root">
+                        connectionURL="jdbc:mysql://192.168.1.251:3306/shirotest"
+                        userId="xyj"
+                        password="ryrbz">
         </jdbcConnection>
         <javaTypeResolver>
             <!-- 默认情况下数据库中的 decimal，bigInt 在 Java 对应是 sql 下的 BigDecimal 类 -->
@@ -49,8 +50,8 @@
         <javaClientGenerator targetPackage="com.amoyiki.springtest.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="sys_acl">
-        </table>
+        <table tableName="schedule_job"> </table>
+
     </context>
 
 </generatorConfiguration>

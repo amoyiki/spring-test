@@ -21,7 +21,7 @@ public class PermServiceTest extends SpringTestApplicationTests {
 
     @Test
     public void testFindPermListByRid(){
-        List<Perm> list = permService.findPermListByRid(1L);
+        List<Perm> list = permService.findPermListByRid(1);
         Assert.assertTrue(list.size()>0);
     }
 }

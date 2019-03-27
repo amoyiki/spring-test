@@ -5,4 +5,6 @@
 #### OAuth2
 整合 Shiro 和 OAUTH2 实现服务端, 使用 Spring Cache 来缓存 OAUTH2 的 auth code
 ### 数据库连接
-整合 Druid 和 MyBatis, 配置 mybatis generator 对数据库表结构逆向生成代码
+整合 Druid 和 MyBatis, 配置 mybatis generator 对数据库表结构逆向生成代码 
+### 定时任务
+整合 quartz 做动态定时任务
