@@ -57,17 +57,28 @@ spring:
     publisher-returns: true
     listener:
       direct:
+        acknowledge-mode: manual  # 手动 ack
         retry:
           enabled: true   # 消费者重试
 
       simple:
+        acknowledge-mode: manual  # 手动 ack
         retry:
           enabled: true
+        concurrency: 10  # 消费者最小数量
+        max-concurrency: 20 # 消费者最大数量
+        prefetch: 5  # 每个消费者未处理消息数
+        auto-startup: true  # 启动时自动启动容器
+        default-requeue-rejected: true  # 投递失败后重新排队
+
     template:
       reply-timeout: 10000  # 超时
       retry:
         enabled: true
-
+        initial-interval: 1000 # 第一次与第二次消息发布时间间隔 1000ms
+        max-attempts: 3  # 重试次数
+        max-interval: 10000 # 重试间隔
+        multiplier: 1.0  # 上次尝试的时间间隔 乘上 基数
   redis:
     shiro:
       host: 192.168.1.251:6379

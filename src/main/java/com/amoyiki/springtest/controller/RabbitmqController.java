@@ -1,5 +1,6 @@
 package com.amoyiki.springtest.controller;
 
+import com.amoyiki.springtest.service.impl.RabbitSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -20,6 +21,8 @@ import java.util.UUID;
 public class RabbitmqController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private RabbitSender sender;
 
     /**
      * 发送消息，生产者
@@ -29,16 +32,18 @@ public class RabbitmqController {
     @GetMapping("directSend")
     public String directSend() {
         String message = "direct 发送消息";
-        rabbitTemplate.convertAndSend("DirectExchange", "DirectKey",
-                message, new CorrelationData(UUID.randomUUID().toString()));
+//        rabbitTemplate.convertAndSend("DirectExchange", "DirectKey",
+//                message, new CorrelationData(UUID.randomUUID().toString()));
+        sender.sendMessage("DirectExchange", "DirectKey", message);
         return "OK";
     }
 
     @GetMapping("topicSend")
     public String topicSend() {
         String message = "topic 发送消息";
-        rabbitTemplate.convertAndSend("TopicExchange", "Topic.Key",
-                message, new CorrelationData(UUID.randomUUID().toString()));
+//        rabbitTemplate.convertAndSend("TopicExchange", "Topic.Key",
+//                message, new CorrelationData(UUID.randomUUID().toString()));
+        sender.sendMessage("TopicExchange", "Topic.Key", message);
         return "OK";
     }
 
