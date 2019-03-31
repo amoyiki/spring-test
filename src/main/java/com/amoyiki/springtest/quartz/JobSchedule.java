@@ -27,8 +27,8 @@ public class JobSchedule implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        log.debug("├ [任务调度] =============== 开始 =================");
+        log.info("├ [任务调度] =============== 开始 =================");
         quartzService.timingTask();
-        log.debug("├ [任务调度] =============== 结束 =================");
+        log.info("├ [任务调度] =============== 结束 =================");
     }
 }

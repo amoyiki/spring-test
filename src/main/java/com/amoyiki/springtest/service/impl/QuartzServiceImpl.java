@@ -36,7 +36,12 @@ public class QuartzServiceImpl implements QuartzService {
         List<ScheduleJob> scheduleJobs = jobMapper.selectAll();
         log.info("├ [job size]: {}", scheduleJobs);
         if (scheduleJobs != null){
-            scheduleJobs.forEach(this::addJob);
+            // 只获取状态是运行的任务
+            scheduleJobs.forEach(job -> {
+                if (job.getStatus()== JobOperateEnum.START.getCode()) {
+                    addJob(job);
+                }
+            });
         }
     }
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amoyiki.springtest.mapper.ClientMapper">
+    <resultMap id="BaseResultMap" type="com.amoyiki.springtest.entry.Client">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="client_name" jdbcType="VARCHAR" property="clientName"/>
+        <result column="client_id" jdbcType="VARCHAR" property="clientId"/>
+        <result column="client_secret" jdbcType="VARCHAR" property="clientSecret"/>
+    </resultMap>
+    <!-- 需要返回一个类对象就需要把所有的字段都带上-->
+    <sql id="clientColumn">id,client_name,client_id,client_secret</sql>
+
+    <select id="findByClientId" parameterType="java.lang.String" resultType="com.amoyiki.springtest.entry.Client">
+        SELECT
+        <include refid="clientColumn"></include>
+        FROM client c
+        <where>
+            c.client_id=#{clientId}
+        </where>
+    </select>
+    <select id="findByClientSecret" parameterType="java.lang.String" resultType="com.amoyiki.springtest.entry.Client">
+        SELECT
+        <include refid="clientColumn"></include>
+        FROM client c
+        <where>
+            c.client_secret=#{clientSecret}
+        </where>
+    </select>
+</mapper>

@@ -7,4 +7,6 @@
 ### 数据库连接
 整合 Druid 和 MyBatis, 配置 mybatis generator 对数据库表结构逆向生成代码 
 ### 定时任务
-整合 quartz 做动态定时任务
+整合 quartz 做动态定时任务 
+### 消息队列
+整合 AMQP

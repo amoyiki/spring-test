@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amoyiki.springtest.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.amoyiki.springtest.entry.Role">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <!-- 抽象出共同的查询列 -->
+  <sql id="roleColumn">${alias}.id,${alias}.name,${alias}.desc,${alias}.code,
+    ${alias}.created,${alias}.updated,${alias}.status</sql>
+
+  <select id="findRoleListByUid" resultType="com.amoyiki.springtest.entry.Role">
+    SELECT
+    <include refid="roleColumn"><property name="alias" value="r"/></include>
+    FROM role r
+  </select>
+</mapper>

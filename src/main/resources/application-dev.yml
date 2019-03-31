@@ -46,6 +46,27 @@ spring:
         login-username: admin
         login-password: 123
 
+  rabbitmq:
+    host: 192.168.1.251
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+    # 开启发送确认
+    publisher-confirms: true
+    publisher-returns: true
+    listener:
+      direct:
+        retry:
+          enabled: true   # 消费者重试
+
+      simple:
+        retry:
+          enabled: true
+    template:
+      reply-timeout: 10000  # 超时
+      retry:
+        enabled: true
 
   redis:
     shiro:

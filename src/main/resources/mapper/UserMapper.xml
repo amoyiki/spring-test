@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amoyiki.springtest.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.amoyiki.springtest.entry.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+    </resultMap>
+    <sql id="userColumn">id,username,password,salt,created,updated,status</sql>
+    <select id="findByUsername" resultType="com.amoyiki.springtest.entry.User">
+        SELECT <include refid="userColumn"></include>
+        FROM user
+        <where>
+            username=#{username}
+        </where>
+    </select>
+</mapper>
