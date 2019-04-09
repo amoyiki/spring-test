@@ -8,7 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 /**
  * Ehcache 配置类
  * @author amoyiki
- * @since 2019/3/11
+ * @date 2019/3/11
  */
 @Slf4j
 public class EhcacheConfig {

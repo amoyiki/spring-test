@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @author amoyiki
- * @since 2019/3/6
+ * @date 2019/3/6
  */
 @Getter
 public enum ShiroStatusEnum {

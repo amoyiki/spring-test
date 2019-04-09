@@ -7,7 +7,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * @author amoyiki
- * @since 2019/3/27
+ * @date 2019/3/27
  */
 @Configuration
 public class QuartzConfig {

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @author amoyiki
- * @since 2019/3/27
+ * @date 2019/3/27
  */
 @Getter
 public enum JobOperateEnum {

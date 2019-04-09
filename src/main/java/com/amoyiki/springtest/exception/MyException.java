@@ -5,7 +5,7 @@ import lombok.Data;
 
 /** 自定义异常继承 RuntimeException 方便 Spring 事务回滚
  * @author amoyiki
- * @since 2019/3/8
+ * @date 2019/3/8
  */
 @Data
 public class MyException extends RuntimeException {

@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 /** 登录数据验证
  * @author amoyiki
- * @since 2019/3/8
+ * @date 2019/3/8
  */
 @Data
 public class LoginForm {

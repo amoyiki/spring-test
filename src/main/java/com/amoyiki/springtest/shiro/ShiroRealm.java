@@ -17,7 +17,7 @@ import org.springframework.util.DigestUtils;
 /**
  * 自定义权限匹配和账号密码匹配
  * @author amoyiki
- * @since  2019/2/28
+ * @date  2019/2/28
  */
 @Slf4j
 public class ShiroRealm extends AuthorizingRealm {

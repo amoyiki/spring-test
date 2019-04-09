@@ -11,7 +11,7 @@ import java.beans.ConstructorProperties;
 
 /**
  * @author amoyiki
- * @since 2019/3/26
+ * @date 2019/3/26
  */
 @Configuration
 public class DruidConfig {

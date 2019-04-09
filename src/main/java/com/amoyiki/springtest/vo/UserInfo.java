@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * @author amoyiki
- * @since 2019/3/7
+ * @date 2019/3/7
  */
 @Data
 public class UserInfo implements Serializable {

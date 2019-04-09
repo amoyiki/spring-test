@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author amoyiki
- * @since 2019/3/8
+ * @date 2019/3/8
  */
 public interface PermService {
     List<Perm> findPermListByRid(Integer rid);

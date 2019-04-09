@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  * token 验证控制器
  *
  * @author amoyiki
- * @since 2019/3/11
+ * @date 2019/3/11
  */
 @RestController
 @RequestMapping("/oauth")

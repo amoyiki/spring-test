@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * @author amoyiki
- * @since 2019/3/6
+ * @date 2019/3/6
  */
 @Slf4j
 public class ShiroTokenManager extends DefaultWebSessionManager {

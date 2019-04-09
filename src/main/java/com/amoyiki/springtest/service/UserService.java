@@ -5,7 +5,7 @@ import com.amoyiki.springtest.vo.UserInfo;
 
 /**
  * @author amoyiki
- * @since 2019/3/7
+ * @date 2019/3/7
  */
 public interface UserService {
 

@@ -2,7 +2,7 @@ package com.amoyiki.springtest.constant;
 
 /**
  * @author amoyiki
- * @since 2019/3/7
+ * @date 2019/3/7
  */
 public final class PermConstant {
     private PermConstant(){}

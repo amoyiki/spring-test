@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /** 参数绑定错误类型
  * @author amoyiki
- * @since 2019/3/8
+ * @date 2019/3/8
  */
 @Getter
 public enum BindStatusEnum {

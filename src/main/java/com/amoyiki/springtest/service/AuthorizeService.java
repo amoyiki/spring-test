@@ -3,7 +3,7 @@ package com.amoyiki.springtest.service;
 /**
  *  OAUTH2 验证服务
  * @author amoyiki
- * @since 2019/3/11
+ * @date 2019/3/11
  */
 public interface AuthorizeService {
     /**

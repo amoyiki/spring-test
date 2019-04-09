@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /** 测试Shiro 权限
  * @author amoyiki
- * @since 2019/3/8
+ * @date 2019/3/8
  */
 @RestController
 @Slf4j

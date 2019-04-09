@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author amoyiki
- * @since 2019/3/28
+ * @date 2019/3/28
  */
 @Configuration
 @Slf4j

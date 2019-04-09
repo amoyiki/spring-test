@@ -41,7 +41,7 @@ import java.net.URISyntaxException;
  * OAUTH2 授权控制器
  *
  * @author amoyiki
- * @since 2019/3/11
+ * @date 2019/3/11
  */
 @Controller
 @Slf4j
