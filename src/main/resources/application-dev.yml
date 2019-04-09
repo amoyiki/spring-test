@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: xyj
-    password: ryrbz
-    url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false&serverTimezone=GMT%2B8
+#    username: root
+#    password: root
+#    url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false&serverTimezone=GMT%2B8
     # hikari 方式连接
 #    hikari:
 #      maximum-pool-size: 10 # 最大连接池
@@ -16,6 +16,15 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     platform: mysql
     druid:
+      # 多数据源
+      db1:
+        jdbc-url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false&serverTimezone=GMT%2B8
+        username: root
+        password: root
+      db2:
+        jdbc-url: jdbc:mysql://192.168.1.251:3306/shirotest?characterEncoding=utf-8&useSSl=false&serverTimezone=GMT%2B8
+        username: root
+        password: root
       initial-size: 5  # 初始化大小
       min-idle: 5  # 最小
       max-active: 100  # 最大

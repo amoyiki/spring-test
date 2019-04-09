@@ -1,8 +1,10 @@
 package com.amoyiki.springtest.service.impl;
 
+import com.amoyiki.springtest.annotation.DataSource;
 import com.amoyiki.springtest.entry.Perm;
 import com.amoyiki.springtest.entry.Role;
 import com.amoyiki.springtest.entry.User;
+import com.amoyiki.springtest.enums.DataSourceEnum;
 import com.amoyiki.springtest.mapper.PermMapper;
 import com.amoyiki.springtest.mapper.RoleMapper;
 import com.amoyiki.springtest.mapper.UserMapper;
@@ -31,7 +33,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PermMapper permMapper;
 
+    // 切换数据源
     @Override
+    @DataSource(DataSourceEnum.DB2)
     public UserInfo findByUsername(String username) {
         User user = userMapper.findByUsername(username);
         if (user != null) {

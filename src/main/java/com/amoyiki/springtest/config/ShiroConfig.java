@@ -53,7 +53,7 @@ public class ShiroConfig {
 	 * 开启 shiro 注解
 	 * @author amoyiki
 	 * @param
-	 * @return org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator
+	 * @return org.springframework.aspect.framework.autoproxy.DefaultAdvisorAutoProxyCreator
 	 */
 	@Bean
 	public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
@@ -63,7 +63,7 @@ public class ShiroConfig {
 	}
 
 	/**
-	 * 开启shiro aop 支持
+	 * 开启shiro aspect 支持
 	 *
 	 * @param securityManager
 	 * @return org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor
